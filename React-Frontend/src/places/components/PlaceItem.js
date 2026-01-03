@@ -8,6 +8,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHistory } from "react-router-dom";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import Maps from "../../shared/components/UIElements/Maps";
 
 export default function PlaceItem(props) {
   const auth = useContext(AuthContext);
@@ -29,7 +30,7 @@ export default function PlaceItem(props) {
       );
       //props.deletePlace(props.id);
       history.push("/" + props.creator);
-    } catch (err) {}
+    } catch (err) { }
   }
 
   return (
@@ -44,7 +45,7 @@ export default function PlaceItem(props) {
         footer={<Button onClick={() => showMap(false)}>CLOSE</Button>}
       >
         <div className="map-container">
-          <h2>THE MAP!</h2>
+          <Maps center={props.location} zoom={16} />
         </div>
       </Modal>
 
